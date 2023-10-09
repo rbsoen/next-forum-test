@@ -1,7 +1,7 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/database"
-// import { compare } from "bcrypt"; // Later
+import { compare } from "bcrypt"
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -38,7 +38,7 @@ export const authOptions: NextAuthOptions = {
           },
         });
         // if user doesn't exist or password doesn't match
-        if (!user || !(password == user.password)) {
+        if (!user || !(await compare(password, user.password))) {
           throw new Error("Invalid username or password");
         }
         return user;

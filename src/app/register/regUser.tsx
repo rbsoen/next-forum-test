@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { prisma } from "@/database"
+import { hash } from "bcrypt"
 
 export async function registerUser(data: FormData) {
     const dispname = data.get("dispname")
@@ -22,7 +23,7 @@ export async function registerUser(data: FormData) {
         data: {
            displayName: dispname,
            email: email,
-           password: password 
+           password: await hash(password, 10) 
         }
     })
 
