@@ -1,17 +1,26 @@
 import { prisma } from "@/database";
+import { use } from "react";
 
-export async function ForumCategorySelect() {
-    const categories = await prisma.category.findMany(
+async function getCategories() {
+    return await prisma.category.findMany(
         {where: {subcategoryOfId: null}}
     )
+}
+
+async function getSubcategories(subOfId: number) {
+    return await prisma.category.findMany(
+        {where: {subcategoryOfId: subOfId}}
+    )
+}
+
+export function ForumCategorySelect() {
+    const categories = use(getCategories())
     return <div>
         <label htmlFor="catList">Category: </label>
         <select name="category" id="catList">
             {
-                categories.map(async category => {
-                    const subcategories = await prisma.category.findMany(
-                        {where: {subcategoryOfId: category.id}}
-                    )
+                categories.map(category => {
+                    const subcategories = use(getSubcategories(category.id))
                     return <optgroup label={category.name}>
                         {
                             subcategories.map(subcategory => 
