@@ -3,5 +3,35 @@
 @tailwind utilities;
 
 .main {
-  @apply container max-w-6xl mx-auto
+  @apply container max-w-6xl mx-auto px-4
+}
+
+.main > main {
+  @apply min-h-screen pt-16 pb-16
+}
+
+#mainHeader {
+  @apply
+    px-8 py-2 text-white bg-slate-800 fixed w-[100%] z-10 left-0 top-0 shadow-lg shadow-neutral-500
+    text-lg
+}
+
+#mainHeader nav {
+  @apply flex flex-row max-w-6xl mx-auto
+}
+
+#mainHeader h1 {
+  @apply flex-grow font-bold
+}
+
+#mainMenu {
+  @apply flex flex-row gap-5 flex-row-reverse
+}
+
+#mainFooter {
+  @apply text-center -mt-16 min-h-[4em] bg-slate-800 text-white pt-5 absolute left-0 w-[100%]
+}
+
+.staticH2 {
+  @apply text-center text-2xl
 }

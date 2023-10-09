@@ -7,6 +7,8 @@ import Provider from "@/app/context/client-provider"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
+import { poppinsRegular, poppinsBold } from './fonts'
+
 export const metadata: Metadata = {
   title: 'Forum',
   description: 'Test forums',
@@ -22,9 +24,10 @@ export default async function RootLayout({
     <html lang="en">
       <Provider session={session}>
       <body className="main">
-        <header>
-          <nav>
-          <ul>
+        <header id="mainHeader">
+          <nav className={poppinsRegular.className}>
+          <h1><Link href="/forum">Forum</Link></h1>
+          <ul id="mainMenu">
             <li><b>{session?.user?.displayName}</b></li>
             {
               session?.user?
@@ -42,8 +45,8 @@ export default async function RootLayout({
         <main>
         {children}
         </main>
-        <footer>
-          Test
+        <footer id="mainFooter">
+          &copy;2023
         </footer>
         <Toaster position="top-right"/>
       </body>

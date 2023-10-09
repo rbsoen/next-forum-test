@@ -15,7 +15,7 @@
 }
 .mainInputs > div {
     @apply
-        flex flex-row
+        flex flex-row max-sm:flex-col
 }
 
 .mainInputs label {
