@@ -1,0 +1,30 @@
+.catList {
+    @apply
+        bg-slate-100
+        border-2
+        rounded-lg
+        px-4 py-2
+        shadow-lg
+}
+
+.catList li {
+    @apply py-1
+}
+
+.catList > li li {
+    @apply
+        ml-12
+}
+
+.catList > li:before {
+    content: "[F]";
+    @apply
+        relative inline-block w-7 h-4
+}
+
+.catList > li li:before {
+    content: "";
+    @apply
+        border-l-2 border-b-2 border-slate-400
+        relative inline-block w-4 h-6 -top-1 -left-2 border-dashed
+}

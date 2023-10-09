@@ -1,0 +1,16 @@
+.forumPage {
+    @apply
+        flex flex-row
+        max-lg:flex-col
+}
+
+.forumPage > *:nth-child(1) {
+    @apply
+        lg:top-16 h-[25em] lg:max-h-[80vh] overflow-y-scroll mt-4 mx-4
+        lg:sticky max-lg:h-[18em]
+}
+
+.forumPage > *:nth-child(2) {
+    @apply
+        flex-grow
+}
