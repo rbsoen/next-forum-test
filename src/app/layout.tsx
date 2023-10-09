@@ -43,7 +43,7 @@ export default async function RootLayout({
           </nav>
         </header>
         <main>
-        {children}
+          {children}
         </main>
         <footer id="mainFooter">
           &copy;2023

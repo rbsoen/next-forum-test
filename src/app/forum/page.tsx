@@ -1,8 +1,9 @@
-import { Post } from "@/components/Post"
+"use server";
 import { PostList } from "@/components/PostList"
+import Layout from "@/components/Layout";
 
-export default function Page() {
-    return <>
+export default async function Page() {
+    return <Layout>
         <PostList/>
-    </>
+    </Layout>
 }
