@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  displayName String
+  email String
+  password String
+  registeredAt DateTime @default(now())
+
+  posts Post[]
+  threads Thread[]
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  contents String
+  posted DateTime @default(now())
+  lastUpdated DateTime @updatedAt
+  inThread Thread @relation(fields: [inThreadId], references: [id])
+  inThreadId Int
+  by User @relation(fields: [byUserId], references: [id])
+  byUserId String
+}
+
+model Thread {
+  id Int @id @default(autoincrement())
+  posts Post[]
+  startedOn DateTime @default(now())
+  threadStarter User @relation(fields: [threadStarterId], references: [id])
+  threadStarterId String
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String
+  subcategories Category[] @relation("Subcategories")
+  subcategoryOf Category? @relation("Subcategories", fields: [subcategoryOfId], references:[id])
+  subcategoryOfId Int?
+}
