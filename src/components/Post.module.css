@@ -1,0 +1,104 @@
+.post {
+    @apply
+    flex flex-col py-4 m-4 rounded-lg
+    shadow-md shadow-slate-400
+    hover:shadow-lg hover:shadow-slate-500
+    transition-shadow
+}
+
+.post p {
+    @apply
+        pb-2
+}
+
+.post > header {
+    @apply
+        flex flex-row px-4 pb-4
+}
+
+.post header img {
+    @apply
+        rounded-[100%] hover:rounded-2xl transition-all
+}
+
+.headerTitle {
+    @apply
+        flex-grow px-4
+}
+
+.headerTitle h2 {
+    @apply
+        text-2xl py-1
+}
+
+.headerVotes {
+    @apply
+        flex flex-col
+}
+
+.headerVotes div {
+    @apply
+        flex flex-row
+}
+
+.headerVotes > a {
+    @apply
+        hover:bg-slate-300 px-2 py-1 transition-colors rounded-lg
+}
+
+.headerVotes dt {
+    text-indent: -999em;
+    @apply
+        w-[1.5em]
+        overflow-hidden
+        relative
+}
+
+.headerVotes dt:after {
+    text-indent: .25em;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    transform: translateY(-50%);
+}
+
+.headerUpvote dt:after {
+    content: "^";
+}
+
+.headerDownvote dt:after {
+    content: "v";
+}
+
+.postMain {
+    @apply
+    px-4 pb-4
+}
+
+.post > footer {
+    @apply
+    px-4
+}
+
+.postLink {
+    @apply
+        text-gray-500
+        relative
+}
+
+.postLink::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    display: block;
+    @apply
+        bg-gray-300 hover:bg-gray-500 transition-all absolute
+}
+
+.postActions {
+    @apply
+        flex justify-between max-w-[20em]
+}
