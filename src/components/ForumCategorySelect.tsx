@@ -1,6 +1,6 @@
 import { prisma } from "@/database";
 
-export async function ForumCategoryList() {
+export async function ForumCategorySelect() {
     const categories = await prisma.category.findMany(
         {where: {subcategoryOfId: null}}
     )

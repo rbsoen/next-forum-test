@@ -6,7 +6,7 @@ import Markdown from 'react-markdown'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { PostForm } from "./PostForm"
-import { ForumCategoryList } from "./ForumCategoryList"
+import { ForumCategorySelect } from "./ForumCategorySelect"
 
 export type PostItem = {
     title: string
@@ -97,7 +97,7 @@ export async function Post({
             editable
             ? (
                 <div className="flex flex-row items-center justify-end gap-4">
-                    <ForumCategoryList/>
+                    <ForumCategorySelect/>
                     <input type="submit" className="bg-slate-300 hover:bg-slate-400 transition-colors rounded-sm px-4 py-2"/>
                 </div>
             )
