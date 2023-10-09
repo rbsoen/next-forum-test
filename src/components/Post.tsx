@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { PostForm } from "./PostForm"
 import { ForumCategorySelect } from "./ForumCategorySelect"
+import { use } from "react";
 
 export type PostItem = {
     title: string
@@ -18,12 +19,15 @@ export type PostItem = {
     numComments: number
 }
 
-export async function Post({
+async function getSession() {
+    return await getServerSession(authOptions)
+}
+
+export function Post({
     post,
     editable = false
 }: {post: PostItem|null, editable: boolean}){
-    const session = await getServerSession(authOptions)
-    console.log(session)
+    const session = use(getSession())
 
     const contents = <>
         <header>
