@@ -2,7 +2,7 @@
 
 import styles from "./AuthForm.module.css"
 import { poppinsRegular } from "../app/fonts"
-import { registerUser } from "@/app/register/page"
+import { registerUser } from "@/app/register/regUser"
 import { toast } from "react-hot-toast"
 import { signIn } from "next-auth/react"
 
